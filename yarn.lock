@@ -358,9 +358,9 @@ atob@^2.1.1:
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
 autoprefixer-loader@^3.2.8:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/autoprefixer-loader/-/autoprefixer-loader-3.2.0.tgz#39a7b6646a8269865073d958c97f486152c2c84a"
-  integrity sha1-Oae2ZGqCaYZQc9lYyX9IYVLCyEo=
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/autoprefixer-loader/-/autoprefixer-loader-3.1.0.tgz#9451d6fa3ad3bc5c836c8b843c6b4aefda6cd202"
+  integrity sha1-lFHW+jrTvFyDbIuEPGtK79ps0gI=
   dependencies:
     autoprefixer "^6.0.2"
     loader-utils "^0.2.11"

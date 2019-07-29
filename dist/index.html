@@ -3,8 +3,28 @@
   <head>
     <meta charset="UTF-8">
     <title>mvc-demo</title>
+    <style>
+      .modules>div{
+        border: 1px solid red;
+        height: 200px;
+        width: 500px;
+      }
+    </style>
   </head>
   <body>
-    <div>hello world</div>
+    <div class="modules">
+      <div class="module1">
+        <input type="text">
+        <button>点我</button>
+      </div>
+      <div class="module2">
+        <input type="text">
+        <button>点我</button>
+      </div>
+      <div class="module3">
+        <input type="text">
+        <button>点我</button>
+      </div>
+    </div>
     <script type="text/javascript" src="bundle.js"></script></body>
 </html>
