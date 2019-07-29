@@ -1,15 +1,18 @@
 import $ from 'jquery'
 
-function Controller(options){
-  let controller = {}
-  controller.$element = $(options.element)
-  controller.events = options.events
+export default class Controller {
+  constructor(options){
+    this.$element = $(options.element)
+    this.events = options.events
+    this.bindEvents()
+  }
 
-  for(const key in controller.events){
-    let arr = key.split(' ')
-    let event = arr.shift()
-    let element = arr.join(' ')
-    controller.$element.on(event, element, controller.events[key])
+  bindEvents(){
+    for(const key in this.events){
+      let arr = key.split(' ')
+      let eventType = arr.shift()
+      let selector = arr.join(' ')
+      this.$element.on(eventType, selector, this.events[key])
+    }
   }
 }
-export default Controller

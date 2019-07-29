@@ -1,6 +1,6 @@
 import Controller from './controller';
 
-Controller({
+new Controller({
   element: '.module1',
   events: {
     'change input': function(){
