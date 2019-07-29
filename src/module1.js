@@ -6,8 +6,12 @@ new Controller({
     'change input': function(){
       console.log('change1')
     },
-    'click button': function() {
-      console.log('click1')
-    }
+    'click button': 'clickButton'
+  },
+  clickButton(){
+    this.addTodo()
+  },
+  addTodo(){
+    console.log('clcik1')
   }
 })
