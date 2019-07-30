@@ -27,7 +27,8 @@ export default class Controller {
     }
   }
   render(){
-    let html = Handlebars.compile(this.template)(this.data)
+    let template = (this.template[0] === "#") ? document.querySelector(this.template).innerHTML : this.template
+    let html = Handlebars.compile(template)(this.data)
     this.$element.html(html)
   }
 }
