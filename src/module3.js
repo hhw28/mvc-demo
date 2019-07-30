@@ -1,10 +1,27 @@
-import $ from 'jquery'
+import Controller from './controller';
+import model from './module3Model';
 
-let $module3 = $('.module3')
-
-$module3.on('change', 'input', function(){
-  console.log('change3')
-})
-$module3.on('click', 'button', function(){
-  console.log('click3')
+new Controller({
+  element: '.module3',
+  template: "#module3Template",
+  model: model,
+  events: {
+    'click button.increase': 'increase',
+    'click button.decrease': 'decrease'
+  },
+  init(){
+    this.model.get().then(() => {
+      this.render()
+    })
+  },
+  increase(){
+    this.model.increase().then(() => {
+      this.render()
+    })
+  },
+  decrease(){ 
+    this.model.decrease().then(() => {
+      this.render()
+    })
+  }
 })

@@ -7,6 +7,9 @@ export default class Controller {
       this[key] = options[key]
     }
     this.$element = $(this.element)
+
+    this.init && this.init()
+
     // 若存在模板和render函数，则进入页面的时候先render
     if(this.template && this.render){
       this.render()
@@ -28,7 +31,8 @@ export default class Controller {
   }
   render(){
     let template = (this.template[0] === "#") ? document.querySelector(this.template).innerHTML : this.template
-    let html = Handlebars.compile(template)(this.data)
+    let data = this.model ? this.model.data : this.data
+    let html = Handlebars.compile(template)(data)
     this.$element.html(html)
   }
 }
