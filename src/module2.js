@@ -1,10 +1,25 @@
-import $ from 'jquery'
+import Controller from './controller';
 
-let $module2 = $('.module2')
-
-$module2.on('change', 'input', function(){
-  console.log('change2')
-})
-$module2.on('click', 'button', function(){
-  console.log('click2')
+new Controller({
+  element: '.module2',
+  template: `
+    <button class="increase">+</button>
+    <span style="display:inline-block;width:20px;text-align:center;">{{number}}</span>
+    <button class="decrease">-</button>
+  `,
+  data: {
+    number: 0
+  },
+  events: {
+    'click button.increase': 'increase',
+    'click button.decrease': 'decrease'
+  },
+  increase(){
+    this.data.number++
+    this.render()
+  },
+  decrease(){ 
+    this.data.number--
+    this.render()
+  }
 })

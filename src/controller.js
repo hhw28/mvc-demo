@@ -1,4 +1,5 @@
 import $ from 'jquery'
+const Handlebars = require('handlebars')
 
 export default class Controller {
   constructor(options){
@@ -6,9 +7,12 @@ export default class Controller {
       this[key] = options[key]
     }
     this.$element = $(this.element)
+    // 若存在模板和render函数，则进入页面的时候先render
+    if(this.template && this.render){
+      this.render()
+    }
     this.bindEvents()
   }
-
   bindEvents(){
     for(const key in this.events){
       let arr = key.split(' ')
@@ -21,5 +25,9 @@ export default class Controller {
         this.$element.on(eventType, selector, this[methodName].bind(this))
       }
     }
+  }
+  render(){
+    let html = Handlebars.compile(this.template)(this.data)
+    this.$element.html(html)
   }
 }
