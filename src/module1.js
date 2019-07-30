@@ -1,4 +1,5 @@
 import Controller from './controller';
+import $ from 'jquery';
 
 new Controller({
   element: '.module1',
@@ -8,10 +9,17 @@ new Controller({
     },
     'click button': 'clickButton'
   },
-  clickButton(){
-    this.addTodo()
+  clickButton(e){
+    const value = this.$element.find('input').val()
+    this.render(value)
   },
-  addTodo(){
-    console.log('clcik1')
+  render(value){
+    let $output = this.$element.find('.output')
+    if($output.length === 0){
+      $output = $('<div class="output"></div>').text(value)
+      $output.appendTo(this.$element)
+    }else{
+      $output.text(value)
+    }
   }
 })
