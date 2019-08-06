@@ -1,16 +1,18 @@
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
-  mode: "production",
-  // 入口 main.js
-  entry: './src/index.js',
-  // 输出
+  mode: 'development',
+  entry: {
+    main: './src/index.js'
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  devtool: 'cheap-module-eval-source-map',
   resolve: {
     alias: {
       handlebars: 'handlebars/dist/handlebars.min.js'
@@ -22,10 +24,12 @@ module.exports = {
     port: 9000
   },
   plugins: [
-    // new HtmlwebpackPlugin({
-    //   title: 'mvc-demo',
-    //   filename: 'index.html'
-    // }),
+    new CleanWebpackPlugin(),
+    new HtmlwebpackPlugin({
+      title: 'mvc-demo',
+      filename: 'index.html',
+      template: './src/index.html'
+    }),
     new OpenBrowserPlugin({
       url: 'http://localhost:9000'
     })
